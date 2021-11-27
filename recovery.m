@@ -1,10 +1,29 @@
+%   recovery 
+%   recoveredMatrix=recovery(data,idealDistribution,ROIsize,percOL)
+%    produces a recovered gene expression matrix from expressions with dropout
+%    and ideal data distribution.
+%
+%   Inputs:
+%   data: double matrix, gene expression data 
+%   in tabular format, i.e., rows denote cells and columns denote the genes. 
+%   idealDistribution: double vector 
+%   Ideal distribution of the data without dropout
+%    
+%   ROIsize: Height and width of the ROIs used in SERM to recover the
+%   expression values
+%   percOL: Percent overlap between two consecutive ROIs. The value should
+%   between 0 and 1. 
+%   Outputs:
+%   recoveredMatrix: SERM-recovered gene expression matrix
+%   
+%   Written by Md Tauhidul Islam, Ph.D., Postdoc, Radiation Oncology,
+%   Stanford University, tauhid@stanford.edu
 
 
+function recoveredMatrix=recovery(data,idealDistribution,ROIsize,percOL)
 
-function Ypad=chydra3(Xorg,hgram,ROIsize,percOL)
 
-
-[rs,cs]=size(Xorg);
+[rs,cs]=size(data);
 numROIr=ceil(rs/ROIsize(1));
 numROIc=ceil(cs/ROIsize(2));
 
@@ -20,7 +39,7 @@ if (rem((csEdit-cs),2))
 end
 
 
-Xpad = padarray(Xorg,[(rsEdit-rs)/2 (csEdit-cs)/2],0,'both');
+Xpad = padarray(data,[(rsEdit-rs)/2 (csEdit-cs)/2],0,'both');
 
 [rsp,csp]=size(Xpad);
 OLsize=ceil(ROIsize*percOL);
@@ -66,8 +85,6 @@ numItY2=ceil(sy/overlappixelY);
 numItX=ceil(sx/overlappixelX)-(1/percOL)+1;
 numItY=ceil(sy/overlappixelY)-(1/percOL)+1;
 
-
-
 Xpad = padarray(Xre,[round((numItX2*overlappixelX-sx)/2) round((numItY2*overlappixelY-sy)/2)],0,'both');
 
 XpadSave=Xpad;
@@ -75,23 +92,17 @@ XpadSave=Xpad;
 for i=1:numItX
     for j=1:numItY
         Xtake=Xpad((i-1)*overlappixelX+1:(i-1)*overlappixelX+ROIsize(1),(j-1)*overlappixelY+1:(j-1)*overlappixelY+ROIsize(2));
-        Xh = histeq(Xtake,hgram);
+        Xh = histeq(Xtake,idealDistribution);
         XpadSave((i-1)*overlappixelX+1:(i-1)*overlappixelX+ROIsize(1),(j-1)*overlappixelY+1:(j-1)*overlappixelY+ROIsize(2))=Xh;
     end
 end
 
         
  Xhist=XpadSave(round((numItX2*overlappixelX-sx)/2)+1:end-round((numItX2*overlappixelX-sx)/2),round((numItY2*overlappixelY-sy)/2)+1:end-round((numItY2*overlappixelY-sy)/2));
-
-
 Xk=Xhist-min(Xhist(:));
-
 Y=minX+(maxX-minX)*Xk;
-
-
 Ypad2 = Y((rsEdit2-rsEdit)/2+1:end-(rsEdit2-rsEdit)/2,(csEdit2-csEdit)/2+1:end-(csEdit2-csEdit)/2);
-
-Ypad = Ypad2((rsEdit-rs)/2+1:end-(rsEdit-rs)/2,(csEdit-cs)/2+1:end-(csEdit-cs)/2);
+recoveredMatrix = Ypad2((rsEdit-rs)/2+1:end-(rsEdit-rs)/2,(csEdit-cs)/2+1:end-(csEdit-cs)/2);
 
 
 end

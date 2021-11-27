@@ -1,17 +1,28 @@
+%   findDistribution 
+%   idealDistribution=findDistribution(X,reduced_Dim,maxEPOCH)
+%   learns the distribution of the ideal data 
+%
+%   Inputs:
+%   data: double matrix, gene expression data 
+%   in tabular format, i.e., rows denote cells and columns denote the genes. 
+%   reduced_Dim: latent dimension of the encoder-decoder network
+%   maxEPOCH: epochs for the training of the network
+%   Outputs:
+%   idealDistribution: Distribution of the ideal expression data
+%   
+%   Written by Md Tauhidul Islam, Ph.D., Postdoc, Radiation Oncology,
+%   Stanford University, tauhid@stanford.edu
+function idealDistribution=findDistribution(data,reduced_Dim,maxEPOCH)
 
-function hgram=findDist3(X,reduced_Dim,maxEPOCH)
-
-
-
-autoenc = trainAutoencoder(X','hiddenSize',reduced_Dim,'MaxEpochs',maxEPOCH,'DecoderTransferFunction','satlin',....
+% Use the encoder-decoder network
+autoenc = trainAutoencoder(data','hiddenSize',reduced_Dim,'MaxEpochs',maxEPOCH,'DecoderTransferFunction','satlin',....
     'L2WeightRegularization',0.001,'ShowProgressWindow',false,'SparsityProportion',1,'SparsityRegularization',1.6,....
     'UseGPU',false);
-finalOut_SCA = predict(autoenc,X');
+finalOut_SCA = predict(autoenc,data');
 
 Xrec = finalOut_SCA';
 
 tempDist=0.01:0.01:1;
-%hgram=betaa*exp(-betaa*tempDist);
 NBin=length(tempDist);
 Xn=rescale(Xrec);Xn(Xn>0.05)=0.05;
 [N,edges,bin] = histcounts(rescale(Xn),NBin,'Normalization','probability');
@@ -21,19 +32,15 @@ fo = fitoptions('Method','NonlinearLeastSquares',...
                'Lower',[0.01],...
                'Upper',[0.1],...
                'StartPoint',[0.05]);
-%[f2,gof2,outFit2] = fit(tempDist',N',expEqn,'options',fo);
+
 ft = fittype(gaussEqn,'problem','n','options',fo);
 [f1,gof1,outFit1] = fit(tempDist',N',ft,'problem',1);
 
 expEqn = '(a^n)*exp(-(b*x))';
-% fo = fitoptions('Lower',[0,5],...
-%                'Upper',[Inf,20],...
-%                'StartPoint',[1 1]);
 fo = fitoptions('Method','NonlinearLeastSquares',...
                'Lower',[0,5],...
                'Upper',[Inf,20],...
                'StartPoint',[1 5]);
-%[f2,gof2,outFit2] = fit(tempDist',N',expEqn,'options',fo);
 ft = fittype(expEqn,'problem','n','options',fo);
 [f2,gof2,outFit2] = fit(tempDist',N',ft,'problem',1);
 
@@ -42,7 +49,7 @@ fo = fitoptions('Method','NonlinearLeastSquares',...
                'Lower',[0.01],...
                'Upper',[0.1],...
                'StartPoint',[0.05]);
-%[f2,gof2,outFit2] = fit(tempDist',N',expEqn,'options',fo);
+
 ft = fittype(rayEqn,'problem','n','options',fo);
 [f3,gof3,outFit3] = fit(tempDist',N',ft,'problem',1);
 
@@ -56,21 +63,6 @@ f{2}=f2;
 f{3}=f3;
 
 idx=find(gofs==min(gofs));
-
-% 
- outF=outfVec{idx};
- 
-%  display('Learned distribution....')
-%  f{idx}
- %f2
-hgram=N'-outF.residuals;
-
-% if idx==2
-%     if f2.b<5
-%         betaa=5;
-%     elseif f2.b>20
-%         betaa=20;
-%     end
-% hgram=betaa*exp(-betaa*tempDist);    
-    
+ outF=outfVec{idx}; 
+idealDistribution=N'-outF.residuals;
 end

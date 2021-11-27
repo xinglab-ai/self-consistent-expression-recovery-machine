@@ -23,7 +23,7 @@
 function recoveredMatrix=serm_v3(data,dataPartLearning,reduced_Dim,maxEPOCH,ROIsize,percOL)
 
 % Learn the distribution of the ideal data
-hgram=findDist3(dataPartLearning,reduced_Dim,maxEPOCH);
+hgram=findDistribution(dataPartLearning,reduced_Dim,maxEPOCH);
 
 % Recover the expression values by matching the distribution of dropout-
 % affected values to the ideal data values
