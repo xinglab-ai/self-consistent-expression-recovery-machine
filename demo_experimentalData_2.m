@@ -5,7 +5,7 @@ close all
 rng(0)
 
 %% Load scRNA-seq data with dropout
-load experimentalData_2_MammalianBrain.mat
+load experimentalData_3_StemCell.mat
 
 % t-SNE of raw data
 [Xtsne_RAW]=tsne(zscore(data));
@@ -33,14 +33,14 @@ xlabel('Normalized value')
 set(gca,'FontSize',FS)
 
 %% SERM parameters
-Xpart=data(1:5000,:); % Part of the data for learning data distribution
+Xpart=data(1:2000,:); % Part of the data for learning data distribution
 maxEPOCH=20; % maximum epoch for autoencoder
-ROIsize=[2000 1000]; % ROI size 
-percOL=0.25; % Percent overlap between successive ROIs
+ROIsize=[2000 500]; % ROI size 
+percOL=0.5; % Percent overlap between successive ROIs
 reduced_Dim=2; % The size of the latent dimension in the autoencoder
 
 % SERM operation
-sermOut=serm((data),Xpart,reduced_Dim,maxEPOCH,ROIsize,percOL);
+sermOut=serm(data,Xpart,reduced_Dim,maxEPOCH,ROIsize,percOL);
 
 % use sermOut=serm_v3((data),Xpart,reduced_Dim,maxEPOCH,ROIsize,percOL)
 % for better speed
