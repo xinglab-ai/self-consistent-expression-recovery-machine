@@ -8,4 +8,8 @@ The gene expression data should be in matrix format (rows are cells and collumns
 SERM works well for a large range of parameters. Thus, even without careful settings, it provides much better results than traditional techniques.
 
 # Example:
-Please see the demo or our web-based tool (https://www.analyxus.com/) for an easy start.
+Please see the demos or our web-based tool (https://www.analyxus.com/) for an easy start.
+
+# Results:
+
+![image](im1.png)
