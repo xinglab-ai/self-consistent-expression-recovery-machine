@@ -4,11 +4,11 @@ close all
 % For reproducibility
 rng(0)
 
-%% Load scRNA-seq data with dropout
-load Xdrop.mat
+%% Load Splatter simulated scRNA-seq data with dropout
+load splatterSimulatedData.mat
 
 % PCA of raw data
-[cff,X_pca_drop]=pca(zscore(Xdrop),'NumComponents',2);
+[cff,X_pca_drop]=pca(zscore(data_Dropout),'NumComponents',2);
 
 
 FS=24;
@@ -22,7 +22,7 @@ set(gca,'FontSize',FS)
 
 % Histogram computation & plotting
 NBin=30;
-[N,edges,bin] = histcounts(rescale(Xdrop),NBin,'Normalization','probability');
+[N,edges,bin] = histcounts(rescale(data_Dropout),NBin,'Normalization','probability');
 
 binX=(1:NBin)/NBin;
 
@@ -33,14 +33,14 @@ xlabel('Normalized value')
 set(gca,'FontSize',FS)
 
 %% SERM parameters
-Xpart=Xdrop(1:5000,:); % Part of the data for learning data distribution
+Xpart=data_Dropout(1:5000,:); % Part of the data for learning data distribution
 maxEPOCH=20; % maximum epoch for autoencoder
 ROIsize=[2000 1000]; % ROI size 
 percOL=0.25; % Percent overlap between successive ROIs
 reduced_Dim=2; % The size of the latent dimension in the autoencoder
 
 % SERM operation
-X_adapthisteq=serm_v3((Xdrop),Xpart,reduced_Dim,maxEPOCH,ROIsize,percOL);
+X_adapthisteq=serm_v3(data_Dropout,Xpart,reduced_Dim,maxEPOCH,ROIsize,percOL);
 
 % PCA of SERM-imputed data
 [cff,X_pca_hydra]=pca(zscore(X_adapthisteq),'NumComponents',2);
