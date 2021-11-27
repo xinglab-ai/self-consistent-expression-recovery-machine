@@ -33,17 +33,15 @@ xlabel('Normalized value')
 set(gca,'FontSize',FS)
 
 %% SERM parameters
-Xpart_Learning=data_Dropout(1:5000,:); % Part of the data for learning data distribution.
-% The user can use any part of the data for learning. 
-maxEPOCH=20; % maximum epoch for encoder-decoder network
+Xpart=data_Dropout(1:5000,:); % Part of the data for learning data distribution
+maxEPOCH=20; % maximum epoch for autoencoder
 ROIsize=[2000 1000]; % ROI size 
 percOL=0.25; % Percent overlap between successive ROIs
-reduced_Dim=2; % The size of the latent dimension in the encoder-decoder network
+reduced_Dim=2; % The size of the latent dimension in the autoencoder
 
 % SERM operation
-serm_Out=serm_v3(data_Dropout,Xpart_Learning,reduced_Dim,maxEPOCH,ROIsize,percOL);
-% The user can also use serm.m. serm_v3 is in .p format and has better
-% speed than serm.m. However, they are same codes. 
+serm_Out=serm_v3(data_Dropout,Xpart,reduced_Dim,maxEPOCH,ROIsize,percOL);
+% The user can also use serm.m. serm_
 
 % PCA of SERM-imputed data
 [cff,X_pca_hydra]=pca(zscore(serm_Out),'NumComponents',2);
