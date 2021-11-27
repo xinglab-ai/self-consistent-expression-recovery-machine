@@ -1,5 +1,5 @@
 %   SERM 
-%    recoveredMatrix=serm_v3(data,dataPartLearning,reduced_Dim,maxEPOCH,ROIsize,percOL)
+%    Y=serm_v3(data,dataPartLearning,reduced_Dim,maxEPOCH,ROIsize,percOL)
 %    produces a recovered gene expression matrix from expressions with dropout.
 %
 %   Inputs:
@@ -12,22 +12,18 @@
 %   maxEPOCH: epochs for the training of the network
 %   ROIsize: Height and width of the ROIs used in SERM to recover the
 %   expression values
-%   percOL: Percent overlap between two consecutive ROIs. The value should
-%   between 0 and 1. 
+%   percOL: Percent overlap between two conse
 %   Outputs:
-%   recoveredMatrix: SERM-recovered gene expression matrix
+%   cfa_out: low dimensional representation from unsupervised CFA
 %   
 %   Written by Md Tauhidul Islam, Ph.D., Postdoc, Radiation Oncology,
 %   Stanford University, tauhid@stanford.edu
 %%
-function recoveredMatrix=serm_v3(data,dataPartLearning,reduced_Dim,maxEPOCH,ROIsize,percOL)
+function Y=serm_v3(data,dataPartLearning,reduced_Dim,maxEPOCH,ROIsize,percOL)
 
-% Learn the distribution of the ideal data
 hgram=findDist3(dataPartLearning,reduced_Dim,maxEPOCH);
 
-% Recover the expression values by matching the distribution of dropout-
-% affected values to the ideal data values
-recoveredMatrix=chydra3(data,hgram,ROIsize,percOL);
+Y=chydra3(data,hgram,ROIsize,percOL);
 
 end
 
