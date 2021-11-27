@@ -8,12 +8,11 @@ The gene expression data should be in matrix format (rows are cells and collumns
 SERM works well for a large range of parameters. Thus, even without careful settings, it provides much better results than traditional techniques.
 
 # Example:
-Please see the demos or our web-based tool (https://www.analyxus.com/) for an easy start.
+Please see the demos or our web-based tool (https://www.analyxus.com/) for an easy start. In our web-based tool, choose "Gene expression recovery" as the data type and SERM as the data anlaysis method. Enjoy! 
 
 # Results:
 
 ![image](im1.png)
-
 Figure. (a1)-(d5) Genomic data with large number (20) of classes simulated with Splatter simulator. Classes 1-20 have
 the same rate parameter of 0.9 and shape parameters of 0.10, 0.11, 0.15, 0.16, 0.20, 0.21, 0.25, 0.26, 0.30, 0.31, 0.35, 0.36,
 0.40, 0.41, 0.50, 0.52, 0.70, 0.71, 0.80 and 0.805, respectively. Dropout shape is set to -1, dropout midpoint is set to zero
