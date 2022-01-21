@@ -8,7 +8,7 @@ The gene expression data should be in matrix format (rows are cells and collumns
 SERM works well for a large range of parameters. Thus, even without careful settings, it provides much better results than traditional techniques.
 
 # Example:
-Please see the demos or our web-based tool (https://www.analyxus.com/) for an easy start. In our web-based tool, choose "Gene expression recovery" as the data type and SERM as the data anlaysis method. Enjoy! 
+Please see the demos or our web-based tool (https://www.analyxus.com/compute/serm) for an easy start. In our web-based tool, choose SERM as the data anlaysis method. Enjoy! 
 
 # Results:
 
