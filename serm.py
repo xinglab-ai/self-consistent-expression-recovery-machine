@@ -69,7 +69,9 @@ def gauss_func(x, c):
 
 def exp_func(x, a, b):
     # Exponential Distribution
-    # a*exp(-(b*x))
+    # a*exp(-(b*x)). a is used here to take care of any scaling in the fitted 
+    # data. Thus, a=M*b, where M is a scaling factor.  This also helps in 
+    # obtaining better parameter estimates from noisy data. 
     return a*np.exp(-(b*x))
 
 def ray_func(x, c):
