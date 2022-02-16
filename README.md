@@ -16,7 +16,7 @@ Please see the Jupyter notebook or MATLAB demos or our web-based tool (https://w
 Figure. (a1)-(d5) Single cell RNA-seq data with 20 classes simulated with Splatter simulator. The first
 two principal components of the original simulated data are shown in (a1) and its histogram in (b1). The first two principal
 components of MAGIC, mcImpute and SERM imputed data are shown in (c1), (a2) and (c2) and their histograms in (d1),
-(b2) and (d2), respectively. The learned distribution by SERM in this case is exponential with parameter value of 20. The
+(b2) and (d2), respectively. The
 principal components of SERM imputed data clearly show the data classes, whereas that from other methods fail to do so.
 Correlation coefficient between the gene expressions of the unimputed (a3)/imputed data and dropout-free data for MAGIC
 (b3), mcImpute (c3) and SERM (d3). Visualization of unimputed and imputed data by t-SNE and UMAP. t-SNE results from
