@@ -13,14 +13,9 @@ Please see the Jupyter notebook or MATLAB demos or our web-based tool (https://w
 # Results:
 
 ![image](im1.png)
-Figure. (a1)-(d5) Single cell RNA-seq data with 20 classes simulated with Splatter simulator. The first
-two principal components of the original simulated data are shown in (a1) and its histogram in (b1). The first two principal
-components of MAGIC, mcImpute and SERM imputed data are shown in (c1), (a2) and (c2) and their histograms in (d1),
-(b2) and (d2), respectively. The
-principal components of SERM imputed data clearly show the data classes, whereas that from other methods fail to do so.
-Correlation coefficient between the gene expressions of the unimputed (a3)/imputed data and dropout-free data for MAGIC
-(b3), mcImpute (c3) and SERM (d3). Visualization of unimputed and imputed data by t-SNE and UMAP. t-SNE results from
-original data and imputed data from MAGIC, mcImpute and SERM are shown in (a4)-(d4) and UMAP results from them are
-shown in (a5)-(d5), respectively. t-SNE and UMAP results from SERM imputed data are much better in separating the
-classes, whereas MAGIC degrades the data as a result of imputation. 
-
+Figure. Analysis of simulated scRNA-seq data with 5 classes. The histograms of the original data, downsampled data,
+and imputed data by MAGIC, mcIMpute, and SERM are shown in the first row of (a). The learned distribution by SERM in
+this case is exponential. Visualization of original, downsampled, and imputed data by t-SNE and UMAP are shown in the
+second and third rows, respectively. t-SNE and UMAP results from SERM imputed data are much better in separating the
+classes, whereas MAGIC degrades the data as a result of imputation. The clustering accuracy and cluster quality indices for
+t-SNE visualizations of imputed data from different methods are shown in (b).
