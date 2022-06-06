@@ -20,7 +20,7 @@
 %   Stanford University, tauhid@stanford.edu
 
 
-function recoveredMatrix=recovery(data,idealDistribution,ROIsize,percOL)
+function recoveredMatrix=recovery(data,distName,param,ROIsize,percOL)
 
 
 [rs,cs]=size(data);
@@ -92,7 +92,7 @@ XpadSave=Xpad;
 for i=1:numItX
     for j=1:numItY
         Xtake=Xpad((i-1)*overlappixelX+1:(i-1)*overlappixelX+ROIsize(1),(j-1)*overlappixelY+1:(j-1)*overlappixelY+ROIsize(2));
-        Xh = histeq(Xtake,idealDistribution);
+        Xh = adapthisteqSERM(Xtake,'NumTiles',[2 2],'ClipLimit',0.0,'NBins',256,'Distribution',distName,'Alpha',param);
         XpadSave((i-1)*overlappixelX+1:(i-1)*overlappixelX+ROIsize(1),(j-1)*overlappixelY+1:(j-1)*overlappixelY+ROIsize(2))=Xh;
     end
 end

@@ -129,7 +129,7 @@ def fit(model, dataloader, epoch, criterion, optimizer,
         l2_reg = _l2_regularizer(model_pars)
         # add the sparsity penalty
         loss = mse_loss + l2 * l2_reg + sparse * sparsity
-        
+        #loss = mse_loss + l2 * l2_reg
         loss.backward()
         optimizer.step()
         running_loss += loss.item()
@@ -151,8 +151,8 @@ def predict(model, dataloader, device):
             prediction_list.append(pred.cpu().numpy())
     return np.concatenate(prediction_list)
 
-def trainAutoencoder(data, reduced_Dim, maxEPOCH, batchSize=16,
-                     l2=0.001, sparse_rho=0.9, sparse=1.6):
+def trainAutoencoder(data, reduced_Dim, maxEPOCH, batchSize=64,
+                     l2=0.05, sparse_rho=0.9, sparse=1):
     # train the Sparse Autoencoder model
     #
     # data: training data, rows denote cells and columns denote the genes.
