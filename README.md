@@ -8,7 +8,7 @@ The gene expression data should be in matrix format (rows are cells and collumns
 SERM works well for a large range of parameters. Thus, even without careful settings, it provides much better results than traditional techniques.
 
 # Example:
-Please see the Jupyter notebook or MATLAB demos or our web-based tool (https://www.analyxus.com/compute/serm) for an easy start.  Enjoy! 
+Please see the Jupyter notebook ``` demo_serm.ipynb```or MATLAB demos or our web-based tool (https://www.analyxus.com/compute/serm) for an easy start.  Enjoy! 
 
 # Results:
 
