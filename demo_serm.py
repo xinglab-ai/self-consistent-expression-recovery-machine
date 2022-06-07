@@ -54,9 +54,9 @@ dataLabel=a['GT']
 
 # Selection of the size of the region of interest (ROI)
 # We choose ROI size in such a way that the expression matrix
-# is divided into 8 (i.e. 4 by 2) ROIs. However, other ROI sizes are also
+# is divided into 4 (i.e. 2 by 2) ROIs. However, other ROI sizes are also
 # fine as SERM is generally very robust against the ROI size. 
-ROIsize = [6000,600]
+ROIsize = [12000,600]
 # Selection of percent of overlap between successive ROIs. The default value is 50%, but other 
 # values can be chosen
 percOL = 0.5

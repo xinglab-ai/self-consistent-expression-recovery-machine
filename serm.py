@@ -7,7 +7,7 @@ from scipy.optimize import curve_fit
 import os
 from functools import partial
 import random
-
+from numba import jit
 
 
 def serm(data,ROIsize=[500,100], percOL=0.5, randomize=True):
@@ -28,8 +28,11 @@ def serm(data,ROIsize=[500,100], percOL=0.5, randomize=True):
     random.seed(0) # Setting the random number generator seed to 0. 
     sz=data.shape
     if (randomize==True):
-        Xcopy=np.copy(data)
-        X, p = shuffle(Xcopy)
+        Xcopy=np.copy(data)        
+        XcopyF=Xcopy.flatten() # Flatten the data matrix for randomization
+        Xc, p = shuffle(XcopyF) # Keep record of the randomization
+        X=np.reshape(Xc, (sz[0], sz[1])) # Convert the randomized vector to
+        # a matrix for SERM operation  
     else: 
         X=data
     
@@ -62,10 +65,12 @@ def serm(data,ROIsize=[500,100], percOL=0.5, randomize=True):
     else:
         X_adapthisteq = recovery(Xre, idealDistributionName, paramX, ROIsize, percOL)
     
-    if (randomize==True):
-        X_adapthisteq, _ = shuffle(X_adapthisteq,permutation=p[::-1])
+    if (randomize==True):        
+        X_adapthisteqX, _ = shuffle(X_adapthisteq.flatten(),permutation=p[::-1])
+        # Use the randomization index to put back the original matrix
+        X_adapthisteq=np.reshape(X_adapthisteqX, (sz[0], sz[1]))        
         
-    Xk = X_adapthisteq - np.min(X_adapthisteq)
+    Xk = X_adapthisteq - np.min(X_adapthisteq) # Rescale back 
     sermOut=minX + (maxX - minX) * Xk
     sermOut=sermOut*(np.sum(data)/np.sum(sermOut))
     return sermOut
@@ -374,6 +379,7 @@ def padImage(I, numTiles, return_pad=True):
     else:
         return np.pad(I, (pad_rows, pad_cols), mode='symmetric')
 
+@jit(nopython=True)
 def clipHistogram(imgHist, clipLimit, numBins):
     # This function clips the histogram according to the clipLimit and
     # redistributes clipped pixels across bins below the clipLimit
@@ -416,7 +422,7 @@ def clipHistogram(imgHist, clipLimit, numBins):
         k += 1
         # start over if numBins was reached
         if k > numBins - 1:
-            k = 1
+            k = 0
 
     return imgHist
 

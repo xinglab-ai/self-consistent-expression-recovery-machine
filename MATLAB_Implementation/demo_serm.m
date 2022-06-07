@@ -8,7 +8,7 @@ load data_CellTax_Downsampled_1perc.mat
 
 %% SERM parameters
 
-ROIsize=[6000 600]; % ROI size 
+ROIsize=[12000 600]; % ROI size 
 percOL=0.5; % Percent overlap between successive ROIs
 Randomize=0; % Randomize set to True
 % SERM operation
