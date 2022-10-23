@@ -20,6 +20,10 @@ https://drive.google.com/drive/folders/1w72k3fCQlS2UtGg2TdY8CihTwavEmz89?usp=sha
 
 Please refer to our Nature Communications paper (Leveraging data-driven self-consistency for high-fidelity gene expression recovery by Islam et al.) if you use the data/code in your research.
 
+# Code Ocean capsule:
+
+You can run our reproducible code ocean capsule, where you just need to click once to obtain the results. Link to the capusule: https://doi.org/10.24433/CO.7874136.v1
+
 # Example:
 Please see the Jupyter notebook ``` demo_serm.ipynb```or MATLAB demos for an easy start.  Enjoy! 
 
