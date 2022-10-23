@@ -21,7 +21,7 @@ https://drive.google.com/drive/folders/1w72k3fCQlS2UtGg2TdY8CihTwavEmz89?usp=sha
 Please refer to our Nature Communications paper (Leveraging data-driven self-consistency for high-fidelity gene expression recovery by Islam et al.) if you use the data/code in your research.
 
 # Example:
-Please see the Jupyter notebook ``` demo_serm.ipynb```or MATLAB demos or our web-based tool (https://www.analyxus.com/compute/serm) for an easy start.  Enjoy! 
+Please see the Jupyter notebook ``` demo_serm.ipynb```or MATLAB demos for an easy start.  Enjoy! 
 
 # Results:
 
