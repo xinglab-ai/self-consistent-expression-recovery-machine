@@ -14,7 +14,11 @@ The gene expression data should be in matrix format (rows are cells and collumns
 SERM works well for a large range of parameters. Thus, even without careful settings, it provides much better results than traditional techniques.
 
 # Where do I get all the data used in the manuscript?
-Please download all the reference and observed data for all six datasets from the following Google Drive link. Please refer to our Nature Communications paper (Leveraging data-driven self-consistency for high-fidelity gene expression recovery by Islam et al.) if you use the data/code in your research.
+Please download all the reference and observed data for all six datasets from the following Google Drive link. 
+
+https://drive.google.com/drive/folders/1w72k3fCQlS2UtGg2TdY8CihTwavEmz89?usp=sharing
+
+Please refer to our Nature Communications paper (Leveraging data-driven self-consistency for high-fidelity gene expression recovery by Islam et al.) if you use the data/code in your research.
 
 # Example:
 Please see the Jupyter notebook ``` demo_serm.ipynb```or MATLAB demos or our web-based tool (https://www.analyxus.com/compute/serm) for an easy start.  Enjoy! 
