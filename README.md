@@ -34,9 +34,4 @@ Please see the Jupyter notebook ``` demo_serm.ipynb```or MATLAB demos for an eas
 # Results:
 
 ![image](im1.png)
-Figure. Analysis of simulated scRNA-seq data with 5 classes. The histograms of the original data, downsampled data,
-and imputed data by MAGIC, mcImpute, and SERM are shown in the first row of (a). The learned distribution by SERM in
-this case is exponential. Visualization of original, downsampled, and imputed data by t-SNE and UMAP are shown in the
-second and third rows, respectively. t-SNE and UMAP results from SERM imputed data are much better in separating the
-classes, when compared to other techniques. The clustering accuracy and cluster quality indices for
-t-SNE visualizations of imputed data from different methods are shown in (b).
+Figure. Analysis of simulated scRNA-seq data with 5 classes. The histograms of the reference data, observed data (1% sampling efficiency), and imputed data by MAGIC, mcImpute, and SERM are shown in the first row of (a). Visualization of reference, observed,  and imputed data by t-SNE and UMAP are shown in the second and third rows, respectively. t-SNE and UMAP results from SERM imputed data are much better in separating the classes, whereas MAGIC degrades the data as a result of imputation. The clustering accuracy and cluster quality indices for UMAP visualizations of imputed data from different methods are shown in (b). Data are presented as mean values +/- standard deviation (SD). Error bars represent the standard deviation of the indices for n=1000 different initializations of k-means clustering.
