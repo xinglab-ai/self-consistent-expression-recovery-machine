@@ -18,7 +18,11 @@ Please download all the reference and observed data for all six datasets from th
 
 https://drive.google.com/drive/folders/1w72k3fCQlS2UtGg2TdY8CihTwavEmz89?usp=sharing
 
-Please refer to our Nature Communications paper (Leveraging data-driven self-consistency for high-fidelity gene expression recovery by Islam et al.) if you use the data/code in your research.
+Please refer to our Nature Communications paper, if you use the data/code in your research.
+
+# Citation:
+
+Islam, M.T., Wang, JY., Ren, H. et al. Leveraging data-driven self-consistency for high-fidelity gene expression recovery. Nat Commun 13, 7142 (2022). https://doi.org/10.1038/s41467-022-34595-w
 
 # Code Ocean capsule:
 
