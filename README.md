@@ -4,7 +4,7 @@ SERM is a data-driven gene expression recovery framework. Using deep learning, S
 ![image](im2.png)
 Figure. Percent improvement in mean Pearson coefficient of the imputed data (in comparison to the observed data) by eight different techniques for cellular taxonomy  dataset. The sampling efficiencies (0.1%-10%) to create the observed data are shown in x-axis.
 
-If you have a datset, where SERM is not performing better than any available technique, please send me an email (tauhid AT stanford.edu). 
+If you have a datset, where SERM is not performing better than any available technique, please send me an email (tauhid@stanford.edu). 
 
 # How to use SERM?
 ## Requirements
