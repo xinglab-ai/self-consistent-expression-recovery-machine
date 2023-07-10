@@ -13,6 +13,7 @@ dependencies:
   - scipy=1.7.3=py39hc147768_0
   - torchvision=0.11.3
   - tqdm=4.62.3=pyhd3eb1b0_1
+  - pip
   - pip:
     - pytorch-mutex
     - torchaudio
