@@ -9,9 +9,9 @@ dependencies:
   - matplotlib=3.5.0=py39h06a4308_0
   - numpy=1.21.2=py39h20f2e39_0
   - pytorch=1.10.2
-  - pytorch-mutex=1.0
+  - pytorch-mutex
   - scikit-learn=1.0.2=py39h51133e4_1
   - scipy=1.7.3=py39hc147768_0
-  - torchaudio=0.10.2
+  - torchaudio
   - torchvision=0.11.3
   - tqdm=4.62.3=pyhd3eb1b0_1
