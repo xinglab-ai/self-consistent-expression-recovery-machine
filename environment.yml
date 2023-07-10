@@ -1,7 +1,7 @@
 name: my_env
 channels:
-  - defaults
   - conda-forge
+  - defaults
 dependencies:
   - cudatoolkit=10.2.89=hfd86e86_1
   - h5py=3.6.0=py39ha0f2276_0
