@@ -22,6 +22,7 @@ jobs:
       - name: Update Conda and channels
         run: |
           conda update conda --yes
+          conda config --set restore_free_channel true
           conda update --all --yes
 
       - name: Install build dependencies
