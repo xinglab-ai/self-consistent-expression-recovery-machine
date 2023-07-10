@@ -19,5 +19,6 @@ setup(
     ],
     packages=find_packages(),
     python_requires=">=3.7",
+    install_requires=open("requirements.txt").readlines(),
     include_package_data=True,
 )
