@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="serm",
-    version="0.0.1",
+    version="0.0.2",
     author="Md Tauhidul Islam",
     author_email="tauhid@stanford.edu",
     description="SERM is a high-performance data-driven gene expression recovery framework.",
@@ -19,6 +19,5 @@ setup(
     ],
     packages=find_packages(),
     python_requires=">=3.7",
-    install_requires=open("requirements.txt").readlines(),
     include_package_data=True,
 )
