@@ -15,3 +15,4 @@ scipy==1.9.3
 torchaudio==2.0.2
 torchvision==0.15.2
 tqdm==4.62.3
+numba
