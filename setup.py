@@ -18,7 +18,7 @@ setup(
         "Operating System :: OS Independent",
     ],
     packages=find_packages(),
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     install_requires=open("requirements.txt").readlines(),
     include_package_data=True,
 )
