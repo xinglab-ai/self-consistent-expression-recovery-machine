@@ -5,9 +5,9 @@ with open("README.md", "r") as fh:
 
 setup(
     name="serm",
-    version="0.0.4",
-    author="Vasudha Jha",
-    author_email="reachvasudha27@gmail.com",
+    version="1.0.0",
+    author="Md Tauhidul Islam",
+    author_email="tauhid@stanford.edu",
     description="SERM is a high-performance data-driven gene expression recovery framework.",
     long_description=long_description,
     long_description_content_type="text/markdown",
