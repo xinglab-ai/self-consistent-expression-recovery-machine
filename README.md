@@ -29,7 +29,7 @@ You can run our reproducible code ocean capsule, where you just need to click on
 
 # Sample data
 
-To run the example code below, you will need to download the required data file. You can download it from [here]().
+To run the example code below, you will need to download the required data files. You can download them from [here](demo/data).
 
 # Example code:
 
