@@ -29,7 +29,7 @@ You can run our reproducible code ocean capsule, where you just need to click on
 
 # Sample data
 
-To run the example code below, you will need to download the required data files. You can download them from [here](demo/data).
+To run the example code below, you will need to download the required data files. You can download them from [here](https://github.com/xinglab-ai/self-consistent-expression-recovery-machine/tree/main/demo/data).
 
 # Example code:
 
