@@ -6,7 +6,7 @@
 h5py==3.6.0
 # hdf5==1.10.6
 matplotlib==3.5.0
-numpy==1.21.2
+numpy==1.22.0
 # pytorch==1.10.2
 # pytorch-mutex==1.0
 torch==1.10.2
