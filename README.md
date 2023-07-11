@@ -1,7 +1,7 @@
 # self-consistent-expression-recovery-machine (SERM)
 SERM is a data-driven gene expression recovery framework. Using deep learning, SERM first learns from a subset of the noisy gene expression data to estimate the underlying data distribution. SERM then recovers the overall gene expression data by analytically imposing a self- consistency on the gene expression matrix, thus ensuring that the expression levels are similarly distributed in different parts of the matrix. SERM performs much better (in most cases >20% improvement than State-of-the-art) and is computationally at least 10 times faster than other analytical techniques. Here is an exmaple of its extra-ordinary performance:
 
-![image](im2.png)
+![image](https://github.com/xinglab-ai/self-consistent-expression-recovery-machine/blob/main/im1.png)
 Figure. Percent improvement in mean Pearson coefficient of the imputed data (in comparison to the observed data) by eight different techniques for cellular taxonomy  dataset. The sampling efficiencies (0.1%-10%) to create the observed data are shown in x-axis.
 
 # How to use SERM?
@@ -89,5 +89,5 @@ print('Required time:',str(time.time()-t),'second')
 
 # Results:
 
-![image](im1.png)
+![image](https://github.com/xinglab-ai/self-consistent-expression-recovery-machine/blob/main/im1.png)
 Figure. Analysis of simulated scRNA-seq data with 5 classes. The histograms of the reference data, observed data (1% sampling efficiency), and imputed data by MAGIC, mcImpute, and SERM are shown in the first row of (a). Visualization of reference, observed,  and imputed data by t-SNE and UMAP are shown in the second and third rows, respectively. t-SNE and UMAP results from SERM imputed data are much better in separating the classes, whereas MAGIC degrades the data as a result of imputation. The clustering accuracy and cluster quality indices for UMAP visualizations of imputed data from different methods are shown in (b). Data are presented as mean values +/- standard deviation (SD). Error bars represent the standard deviation of the indices for n=1000 different initializations of k-means clustering.
