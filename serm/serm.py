@@ -2,7 +2,7 @@ import scipy
 import scipy.io as sio
 from scipy.interpolate import interp1d
 import numpy as np
-from sparseae import *
+from .sparseae import *
 from scipy.optimize import curve_fit
 import os
 from functools import partial
