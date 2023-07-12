@@ -29,7 +29,7 @@ You can run our reproducible code ocean capsule, where you just need to click on
 
 # Sample data
 
-To run the example code below, you will need to download the required data files. You can download them from [here](https://github.com/xinglab-ai/self-consistent-expression-recovery-machine/tree/main/demo/data).
+To run the example code below, you will need to download the required data files. You can download them from [here](https://drive.google.com/drive/folders/13diFWPuZpncZE27OGQ0lplElsVCaSYog).
 
 # Example code:
 
@@ -42,19 +42,19 @@ import random
 import time
 
 # Load the reference data, the observed data, and the data labels
-# The raw data is from the work of Baryawno et al. 
-# Reference: Baryawno, Ninib, et al. "A cellular taxonomy 
+# The raw data is from the work of Baryawno et al.
+# Reference: Baryawno, Ninib, et al. "A cellular taxonomy
 # of the bone marrow stroma in homeostasis and leukemia." Cell 177.7 (2019): 1915-1932.
-# The data from the authors contains 23092 cells and 27998 genes. 
-# The raw data is added in 'data' folder of this capsule. Following Huang et al 
-# (Nature Methods 15, 539–542 (2018)), we choose 12,162 cells and 2,422 genes with 
+# The data from the authors contains 23092 cells and 27998 genes.
+# The raw data is added in 'data' folder of this capsule. Following Huang et al
+# (Nature Methods 15, 539–542 (2018)), we choose 12,162 cells and 2,422 genes with
 # high expression to create a reference dataset.
-# 
-# The following two code lines read the reference data 
-a=sio.loadmat('demo/data/data_reference.mat')
+
+# The following two code lines read the reference data
+a=sio.loadmat('data_reference.mat')
 dataRef=a['data_reference']
 
-# The observed data were generated from the reference data by simulating efficiency loss that introduces zeros 
+# The observed data were generated from the reference data by simulating efficiency loss that introduces zeros
 # following the work of Huang et al.
 # The following three code lines were used from Huang et al to create observed data with 10%
 # sampling efficiency: (detail code (demo_creation_observedData.R) is also added in the 'code' folder
@@ -64,23 +64,19 @@ dataRef=a['data_reference']
 #  rpois(length(data), data)))
 
 # The following two code lines read the observed data for 10% sampling efficiency
-a=sio.loadmat('demo/data/data_observed_10perc.mat')
+a=sio.loadmat('data_observed_10perc.mat')
 dataObs=a['data_observed']
-
-# Load data labels 
-a=sio.loadmat('demo/data/data_label.mat')
-dataLabel=a['data_label']
 
 # Selection of the size of the region of interest (ROI)
 # We choose ROI size in such a way that the expression matrix
 # is divided into 4 (i.e. 2 by 2) ROIs. However, other ROI sizes are also
-# fine as SERM is generally very robust against the ROI size. 
+# fine as SERM is generally very robust against the ROI size.
 ROIsize = [6100,1250]
-# Selection of percent of overlap between successive ROIs. The default value is 50%, but other 
+# Selection of percent of overlap between successive ROIs. The default value is 50%, but other
 # values can be chosen
 percOL = 0.5
 t=time.time() # For keeping record of computational time
-random.seed(0) # Setting the random number generator seed to 0. 
+random.seed(0) # Setting the random number generator seed to 0.
 # Run SERM
 out_SERM = srm.serm(dataObs,ROIsize,percOL,randomize=False) # If you want to randomize the rows and columns
 # of the data before applying SERM, please choose randomize=True
